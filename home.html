@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<head>
+<title>FOX KIDS</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	 
+  <link href="https://github.com/listamake/flashtools/raw/main/neuropol.otf" rel="stylesheet">
+<style>
+.logo-main{
+
+}
+       /* Estilos para o estado normal */
+        .custom-button {
+            border: none;
+            background: none;
+            cursor: pointer;
+            padding: 0;
+        }
+
+     
+
+        /* Estilos para o estado hover (ao passar o mouse) */
+        .custom-button:hover img {
+            opacity: 0.7; /* Por exemplo, reduza a opacidade ao passar o mouse */
+        }
+
+        /* Estilos para o estado de foco (quando o botão está pressionado) */
+        .custom-button:active img {
+            opacity: 0.5; /* Por exemplo, reduza ainda mais a opacidade quando pressionado */
+        }
+		table {
+            width: 100%;
+            background-color: yellow;
+            border: 5px solid red;
+            border-collapse: collapse;
+			 display: flex;
+     justify-content: space-between;
+	 flex-direction: column;
+	 align-items: stretch;
+     margin-bottom: 2px; /* Adicionar espaço de 5 pixels entre os itens */
+     border-radius: 25px; /* Cantos arredondados */
+    
+        }
+
+		.navegation{
+		display: flex;
+    align-items: center;
+    flex-direction: row;
+    justify-content: center;
+	margin-top: 40px; /* Adicionar uma margem superior */
+		
+		}
+		.main-buttonelas{
+			display: flex;
+    align-items: center;
+		
+		
+		}
+        td {
+            text-align: center;
+            padding: 5px;
+        }
+
+
+        .custom-button img {
+            width: 50px; /* Defina o tamanho da imagem */
+        }
+
+        .button-name {
+		font-family: "neuropol", sans-serif;
+            display: none;
+			
+        }
+		        .button-names.active {
+            display: block;
+        }
+
+        .default-text {
+            display: none;
+        }
+
+        .default-text.active {
+            display: block;
+        }
+
+        .custom-button:hover + .button-name {
+            display: inline-block;
+        }
+		.logo-fk{
+		
+		            width: 100px; /* Defina o tamanho da imagem */
+		
+		}
+
+
+</style>
+
+</head>
+<body>
+<span class="navegation">
+<div class="logo-main"><img src="fklogo.png" alt="Capa do programa" class="logo-fk"></div>
+<div class="main-buttonelas"> 
+
+    <table>
+        <tr>
+            <td>
+		    <div class="button-names" id="buttonNames">
+        <!-- Nomes dos botões serão carregados aqui -->
+    </div>
+	 <div class="default-text active">Clique aqui</div>
+	</td><td>
+                <button class="custom-button" onclick="window.location.href='pagina1.html'">
+                    <img src="prog.png" alt="Programação">
+                </button>
+            </td>
+            <td>
+                <button class="custom-button" onclick="window.location.href='pagina2.html'">
+                    <img src="caminho_da_imagem2.jpg" alt="Imagem 2">
+                </button>
+            </td>
+            <td>
+                <button class="custom-button" onclick="window.location.href='pagina3.html'">
+                    <img src="caminho_da_imagem3.jpg" alt="Imagem 3">
+                </button>
+            </td>
+        </tr>
+    </table>
+
+
+
+  
+
+
+    </div></span>
+   <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            var buttonNames = document.getElementById("buttonNames");
+            var defaultText = document.querySelector(".default-text");
+
+            var buttons = document.querySelectorAll(".custom-button");
+            buttons.forEach(function(button) {
+                var name = button.querySelector("img").alt;
+                button.addEventListener("mouseover", function() {
+                    buttonNames.innerText = name;
+                    buttonNames.classList.add("active");
+                    defaultText.classList.remove("active");
+                });
+                button.addEventListener("mouseout", function() {
+                    buttonNames.classList.remove("active");
+                    buttonNames.innerText = "";
+                    defaultText.classList.add("active");
+                });
+            });
+        });
+    </script>
+</body>
+
+
+
+
+</html>
