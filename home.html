@@ -1,161 +1,565 @@
 <!DOCTYPE html>
+<html>
 <head>
-<title>FOX KIDS</title>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-	 
-  <link href="https://github.com/listamake/flashtools/raw/main/neuropol.otf" rel="stylesheet">
-<style>
-.logo-main{
+    <title>Leitor de Canais IPTV</title>
+    <!-- Inclua os arquivos de script e estilo do Video.js -->
+  
+    <style>
 
-}
-       /* Estilos para o estado normal */
-        .custom-button {
-            border: none;
-            background: none;
-            cursor: pointer;
-            padding: 0;
-        }
+/* Estilos para o formato de lista */
 
-     
-
-        /* Estilos para o estado hover (ao passar o mouse) */
-        .custom-button:hover img {
-            opacity: 0.7; /* Por exemplo, reduza a opacidade ao passar o mouse */
-        }
-
-        /* Estilos para o estado de foco (quando o botão está pressionado) */
-        .custom-button:active img {
-            opacity: 0.5; /* Por exemplo, reduza ainda mais a opacidade quando pressionado */
-        }
-		table {
-            width: 100%;
-            background-color: yellow;
-            border: 5px solid red;
-            border-collapse: collapse;
-			 display: flex;
-     justify-content: space-between;
-	 flex-direction: column;
+   .list-view {
+     list-style: none;
+     padding: 0;
+	 margin: 0; /* Remover a margem padrão da lista */
+  }
+  
+.list-view .channel-card {
+     display: flex;
+     justify-content: flex-start;
 	 align-items: stretch;
-     margin-bottom: 2px; /* Adicionar espaço de 5 pixels entre os itens */
-     border-radius: 25px; /* Cantos arredondados */
-    
+     margin-bottom: 10px; /* Adicionar espaço de 5 pixels entre os itens */
+     background-color: #f0f0f0; /* Cor cinza claro */
+     border-radius: 15px; /* Cantos arredondados */
+     padding: 10px; /* Espaçamento interno para afastar o conteúdo das bordas */
+}
+
+
+        .channel-list {
+            display: block;
+            margin-bottom: 20px;
         }
 
-		.navegation{
-		display: flex;
-    align-items: center;
-    flex-direction: row;
-    justify-content: center;
-	margin-top: 40px; /* Adicionar uma margem superior */
-		
-		}
-		.main-buttonelas{
-			display: flex;
-    align-items: center;
-		
-		
-		}
-        td {
-            text-align: center;
-            padding: 5px;
+      .channel-card {
+            background-color: #f0f0f0;
+            border-radius: 10px;
+            box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.1);
         }
-
-
-        .custom-button img {
-            width: 50px; /* Defina o tamanho da imagem */
-        }
-
-        .button-name {
-		font-family: "neuropol", sans-serif;
-            display: none;
+      .channel-details {
+	      display: flex;
+          align-items: flex-start;
+		  justify-content: center;
+          flex-direction: column;
 			
         }
-		        .button-names.active {
-            display: block;
-        }
-
-        .default-text {
-            display: none;
-        }
-
-        .default-text.active {
-            display: block;
-        }
-
-        .custom-button:hover + .button-name {
-            display: inline-block;
-        }
-		.logo-fk{
+        .channel-logo {
 		
-		            width: 100px; /* Defina o tamanho da imagem */
-		
-		}
+            width: 50px;
+            max-height: 50px;
+            margin-right: 10px;
+			object-fit: cover;
+			float: left;
+		    border-radius: 10px; /* Adicionando bordas arredondadas */
+        }
+
+        .channel-info {
+            display: flex;
+            align-items: baseline;
+            font-size: 11px;
+            font-weight: bold;
+			font-family: Arial, sans-serif;
+	        
+        }
+
+        .channel-name {
+		    display: flex;
+			font-family: Arial, sans-serif;
+            font-size: 16px;
+            font-weight: bold;
+        }
+
+         .group-title  {
+            margin-top: 3px;
+            background-color: black;
+			margin-right: 5px;
+			padding: 4px;
+            color: white;
+            border-radius: 5px;
+        }
+	    .stream-info {
+            
+            background-color: black;
+			padding: 4px;
+            color: white;
+            border-radius: 5px;
+        }
 
 
-</style>
+/* Estilos para o formato de grade com colunas ajustáveis */
+.grid-view {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 20px;
+}
 
+.grid-view .channel-card {
+    display: block;
+    margin: 0;
+    padding: 10px;
+    background-color: #f0f0f0;
+    border-radius: 10px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+        /* Estilos para os botões de visualização */
+/* Estilos para os botões de visualização */
+.view-options {
+    display: flex;
+    margin-left: 10px;
+}
+
+.toggle-button {
+    margin-right: 10px;
+    padding: 5px 10px;
+    background-color: #333;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.toggle-button.selected-button {
+    background-color: #007bff;
+}
+
+/* Estilos para o view-toggle */
+.view-toggle {
+    display: flex;
+    text-align: center;
+    margin: 20px 0;
+    background-color: #f0f0f0;
+    border-radius: 10px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.visu-table {
+    display: flex;
+    align-items: center;
+    padding: 5px 10px;
+    font-family: Arial, sans-serif;
+    margin-left: 8px;
+}
+
+     /* Estilo para destacar o botão selecionado */
+   .selected-button {
+    background-color: #007bff;
+    color: #fff;
+}
+
+    .program-duration {
+      display: inline-block;
+      margin-right: 8px;
+    }
+
+    .rating-square {
+      display: inline-block;
+      width: 24px;
+      height: 24px;
+      text-align: center;
+      line-height: 24px;
+      font-family: 'Anton', sans-serif; /* Adicionando a fonte Anton do Google Fonts */
+      color: white;
+      border-radius: 4px;
+      margin-right: 4px;
+    }
+
+    .rating-l {
+      background-color: green;
+    }
+
+    .rating-10 {
+      background-color: #00ced1; /* Azul Celeste */
+    }
+
+    .rating-12 {
+      background-color: #ffd700; /* Amarelo Ouro */
+    }
+
+    .rating-14 {
+      background-color: orange;
+    }
+
+    .rating-16 {
+      background-color: red;
+    }
+
+    .rating-18 {
+      background-color: black;
+    }
+
+    .rating-al {
+      background-color: green;
+    }
+
+    .rating-a10,
+    .rating-a12,
+    .rating-a14,
+    .rating-a16,
+    .rating-a18 {
+      font-size: 14px; /* Alterado para 14px */
+      line-height: 24px;
+      text-align: center;
+      font-family: 'Anton', sans-serif; /* Adicionando a fonte Anton do Google Fonts */
+      color: white;
+      border-radius: 4px;
+      margin-right: 4px;
+    }
+
+    .rating-a10 {
+      background-color: #00ced1; /* Azul Celeste */
+    }
+
+    .rating-a12 {
+      background-color: #ffd700; /* Amarelo Ouro */
+    }
+
+    .rating-a14 {
+      background-color: orange;
+    }
+
+    .rating-a16 {
+      background-color: red;
+    }
+
+    .rating-a18 {
+      background-color: black;
+    }
+
+    .duration-bar {
+      width: 100%;
+      height: 20px;
+      background-color: #ddd;
+      position: relative;
+      border-radius: 10px;
+      overflow: hidden;
+    }
+
+    .duration-progress {
+      height: 100%;
+      background-color: #4CAF50;
+      border-radius: 10px;
+    }
+	.channel-epg {
+    padding: 8px 0;
+    border-top: 1px solid #ccc;
+    max-height: 200px; /* Defina a altura máxima para evitar que a lista de programas fique muito longa */
+    overflow-y: auto; /* Adicione uma barra de rolagem vertical se houver muitos programas */
+}
+
+    </style>
 </head>
+
 <body>
-<span class="navegation">
-<div class="logo-main"><img src="fklogo.png" alt="Capa do programa" class="logo-fk"></div>
-<div class="main-buttonelas"> 
 
-    <table>
-        <tr>
-            <td>
-		    <div class="button-names" id="buttonNames">
-        <!-- Nomes dos botões serão carregados aqui -->
-    </div>
-	 <div class="default-text active">Clique aqui</div>
-	</td><td>
-                <button class="custom-button" onclick="window.location.href='pagina1.html'">
-                    <img src="prog.png" alt="Programação">
-                </button>
-            </td>
-            <td>
-                <button class="custom-button" onclick="window.location.href='pagina2.html'">
-                    <img src="caminho_da_imagem2.jpg" alt="Imagem 2">
-                </button>
-            </td>
-            <td>
-                <button class="custom-button" onclick="window.location.href='pagina3.html'">
-                    <img src="caminho_da_imagem3.jpg" alt="Imagem 3">
-                </button>
-            </td>
-        </tr>
-    </table>
+<div class="view-toggle">
+    <span class="visu-table">Visualisar:</span>
+    <select id="view-select">
+        <option value="list-view">Lista</option>
+        <option value="grid-view">Grade</option>
+    </select>
+</div>
+
+
+<div id="channels-list" class="list-view">
+    <!-- Os canais serão listados aqui -->
+</div>
 
 
 
-  
+<script>
+const iptvUrl = "https://raw.githubusercontent.com/listamake/iptvbr/main/home.m3u";
+
+const channelsList = document.getElementById("channels-list");
+
+// Função para alternar entre as visualizações
+
+const viewSelect = document.getElementById("view-select");
+
+// Função para alternar entre as visualizações
+function toggleView() {
+    const selectedView = viewSelect.value;
+    channelsList.classList.remove("list-view", "grid-view");
+    channelsList.classList.add(selectedView);
+}
 
 
-    </div></span>
-   <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            var buttonNames = document.getElementById("buttonNames");
-            var defaultText = document.querySelector(".default-text");
+// Função para analisar as URLs dos EPGs
+function parseEPGUrls(data) {
+    const epgUrlsMatch = data.match(/#EXTM3U\s+url-tvg="([^"]*)"/);
+    const epgUrls = epgUrlsMatch ? epgUrlsMatch[1].split(",") : [];
+    return epgUrls;
+}
 
-            var buttons = document.querySelectorAll(".custom-button");
-            buttons.forEach(function(button) {
-                var name = button.querySelector("img").alt;
-                button.addEventListener("mouseover", function() {
-                    buttonNames.innerText = name;
-                    buttonNames.classList.add("active");
-                    defaultText.classList.remove("active");
-                });
-                button.addEventListener("mouseout", function() {
-                    buttonNames.classList.remove("active");
-                    buttonNames.innerText = "";
-                    defaultText.classList.add("active");
-                });
-            });
+// Função para carregar a lista de canais
+function loadChannels() {
+    fetch(iptvUrl)
+    .then(response => response.text())
+    .then(data => {
+        const epgUrls = parseEPGUrls(data);
+        parseChannels(data);
+        // Agora você pode usar a lista de URLs dos EPGs (epgUrls) como desejar
+    })
+    .catch(error => console.error("Erro ao carregar a lista de canais:", error));
+}
+
+
+// Função para analisar os dados da lista de canais
+function parseChannels(data) {
+    const lines = data.split("\n");
+    let channel = null;
+    let insideChannelInfo = false;
+
+    lines.forEach(line => {
+        line = line.trim();
+        if (line.startsWith("#EXTINF:")) {
+            if (channel) {
+                createChannelElement(channel);
+            }
+            channel = parseChannelInfo(line);
+            insideChannelInfo = true;
+        } else if (insideChannelInfo && line.startsWith("http")) {
+            channel.streamUrl = line;
+            determineStreamQuality(channel);
+            createChannelElement(channel);
+            channel = null;
+            insideChannelInfo = false;
+        }
+    });
+}
+
+
+// Função para determinar a qualidade do stream
+// Função para determinar o formato de imagem
+function determineImageFormat(resolution) {
+    const [width, height] = resolution.split("x").map(Number);
+    const aspectRatio = width / height;
+
+    if (Math.abs(aspectRatio - (16 / 9)) < 0.1) {
+        return "16:9";
+    } else if (Math.abs(aspectRatio - (4 / 3)) < 0.1) {
+        return "4:3";
+    } else {
+        return "Desconhecido";
+    }
+}
+
+// Função para determinar a qualidade do stream
+
+function determineStreamQuality(channel) {
+    const streamUrl = channel.streamUrl.toLowerCase();
+    let streamQuality = "Desconhecida";
+    let streamResolution = "";
+    let imageFormat = "Desconhecido";
+    let streamType = "";
+
+    if (streamUrl.includes(".m3u8")) { // HLS stream
+        streamType = "HLS";
+        const resolutionMatch = streamUrl.match(/(\d{3,4}[pP])/);
+        if (resolutionMatch) {
+            streamResolution = resolutionMatch[1].toUpperCase();
+            streamQuality = streamResolution.includes("1080") ? "Full HD" :
+                           streamResolution.includes("720") ? "HD" :
+                           streamResolution.includes("480") ? "SD" : "Desconhecida";
+            imageFormat = determineImageFormat(streamResolution);
+        }
+    } else if (streamUrl.includes(".mpd")) { // DASH stream
+        streamType = "DASH";
+       const resolutionMatch = streamUrl.match(/(\d{3,4}[pP])/);
+        if (resolutionMatch) {
+            streamResolution = resolutionMatch[1].toUpperCase();
+            streamQuality = streamResolution.includes("1080") ? "Full HD" :
+                           streamResolution.includes("720") ? "HD" :
+                           streamResolution.includes("480") ? "SD" : "Desconhecida";
+            imageFormat = determineImageFormat(streamResolution);
+        }}
+
+    channel.streamQuality = streamQuality;
+    channel.streamResolution = streamResolution;
+    channel.imageFormat = imageFormat;
+    channel.streamType = streamType;
+}
+
+
+
+ 
+// Função para analisar as informações do canal
+function parseChannelInfo(line) {
+       const matches = line.match(/"[^"]*"\s*,\s*([^"]*)/);
+    const channelName = matches ? matches[1] : "";
+
+    const tvgId = extractValue(line, /tvg-id="([^"]*)"/);
+    const tvgChno = extractValue(line, /tvg-chno="([^"]*)"/);
+    const tvgLogo = extractValue(line, /tvg-logo="([^"]*)"/);
+    const groupTitle = extractValue(line, /group-title="([^"]*)"/);
+
+    return {
+        tvgId,
+        tvgChno,
+        tvgLogo,
+        groupTitle,
+        channelName
+    };
+}
+//Processar programas
+// Função para extrair valor usando regex
+function extractValue(line, regex) {
+    const match = line.match(regex);
+    return match ? match[1] : "";
+}
+    const epgUrl = "https://raw.githubusercontent.com/listamake/iptvbr/main/guide/epg.xml";
+
+    // Função para extrair informações do EPG
+    function extractEPGInfo() {
+      fetch(epgUrl)
+        .then(response => response.text())
+        .then(xmlString => {
+          parseEPG(xmlString);
+        })
+        .catch(error => {
+          console.error("Erro ao obter o EPG:", error);
         });
-    </script>
+    }
+
+    // Função para calcular o tempo restante do programa
+    function calculateTimeRemaining(programEnd) {
+      const now = new Date();
+      return (programEnd - now) / 1000; // em segundos
+    }
+
+    // Função para mapear a data e hora no formato "YYYYMMDDHHMMSS TZ"
+    function mapDateTime(dateTimeString) {
+      const regex = /^(\d{4})(\d{2})(\d{2})(\d{2})(\d{2})(\d{2})\s([+-])(\d{2})(\d{2})$/;
+      const match = dateTimeString.match(regex);
+      if (match) {
+        const [, year, month, day, hour, minutes, seconds, sign, offsetHours, offsetMinutes] = match;
+        const timezoneOffset = (sign === "+" ? 1 : -1) * (parseInt(offsetHours, 10) * 60 + parseInt(offsetMinutes, 10));
+        return new Date(Date.UTC(year, month - 1, day, hour, minutes, seconds) - timezoneOffset * 60 * 1000);
+      }
+      return null;
+    }
+
+    // Função para adicionar zeros à esquerda
+    function padZero(number) {
+      return number.toString().padStart(2, '0');
+    }
+
+    // Função para formatar a duração em dias, horas e minutos
+    function formatDuration(duration) {
+      const days = Math.floor(duration / 86400); // 86400 segundos em um dia
+      const remainingSeconds = duration % 86400;
+      const hours = Math.floor(remainingSeconds / 3600);
+      const minutes = Math.floor((remainingSeconds % 3600) / 60);
+      let formattedDuration = '';
+      if (days > 0) {
+        formattedDuration += `${days} dia${days > 1 ? 's' : ''} `;
+      }
+      if (hours > 0) {
+        formattedDuration += `${hours} hora${hours > 1 ? 's' : ''} `;
+      }
+      if (minutes > 0) {
+        formattedDuration += `${minutes} minuto${minutes > 1 ? 's' : ''}`;
+      }
+      return formattedDuration.trim();
+    }
+
+    // Função para mapear o número da classificação indicativa
+    function mapRating(rating) {
+      const ratingMap = {
+        "L": { text: "L", color: "green" },
+        "10": { text: "10", color: "#00ced1" }, // Azul Celeste
+        "12": { text: "12", color: "#ffd700" }, // Amarelo Ouro
+        "14": { text: "14", color: "orange" },
+        "16": { text: "16", color: "red" },
+        "18": { text: "18", color: "black" },
+        // Classificações com variantes
+        "AL": { text: "AL", color: "green" },
+        "A10": { text: "A10", color: "#00ced1" }, // Azul Celeste
+        "A12": { text: "A12", color: "#ffd700" }, // Amarelo Ouro
+        "A14": { text: "A14", color: "orange" },
+        "A16": { text: "A16", color: "red" },
+        "A18": { text: "A18", color: "black" }
+      };
+
+      return ratingMap[rating] || null;
+    }
+
+    // Função para mapear o valor da classificação indicativa a partir do elemento <value>
+    function mapRatingValue(ratingElement) {
+      const valueElement = ratingElement.querySelector("value");
+      return valueElement ? valueElement.textContent : null;
+    }
+
+    // Função para mapear a classificação indicativa a partir do elemento <rating system="CLASSIFICACAO_ETARIA"> e <rating system="CLASSIND">
+    function mapProgramRating(programElement) {
+      const programRatingElement = programElement.querySelector("rating[system='CLASSIFICACAO_ETARIA']");
+      const programRatingIndElement = programElement.querySelector("rating[system='CLASSIND']");
+      const programRating = programRatingElement ? mapRatingValue(programRatingElement) : programRatingIndElement ? mapRatingValue(programRatingIndElement) : null;
+      return programRating;
+    }
+
+    // Função para calcular a largura da barra de duração
+    function calculateDurationProgress(programStart, programEnd) {
+      const now = new Date();
+      const totalTime = programEnd - programStart;
+      const elapsedTime = now - programStart;
+      return `${(elapsedTime / totalTime) * 100}%`;
+    }
+
+    // Função para mapear o nome do canal a partir do elemento <display-name lang="pt">
+function mapChannelName(channelElement) {
+  const displayNameElements = channelElement.querySelectorAll("display-name");
+  
+  for (const displayNameElement of displayNameElements) {
+    const NameAttribute = displayNameElement.getAttribute("lang");
+    if (!NameAttribute || NameAttribute.toLowerCase() === "pt") {
+      return displayNameElement.textContent;
+    }
+  }
+  return null; // Retorna null se não encontrar descrição em português
+}
+
+    // Função para formatar a hora e os minutos no formato "HH:MM"
+    function formatTime(date) {
+      const hours = padZero(date.getHours());
+      const minutes = padZero(date.getMinutes());
+      return `${hours}:${minutes}`;
+    }
+	
+// Função para criar um elemento de canal na lista
+function createChannelElement(channel) {
+  const channelElement = document.createElement("div");
+  channelElement.classList.add("channel-card");
+  channelElement.innerHTML = `
+    <div class="channel-header">
+      <img src="${channel.tvgLogo}" alt="${channel.channelName} Logo" class="channel-logo">           
+    </div>
+    <div class="channel-details">
+      <span class="channel-name">${parseInt(channel.tvgChno, 10)}.${channel.channelName}(${channel.tvgId})</span>
+      <div class="channel-info">
+        <p class="group-title">${channel.groupTitle}</p>
+        <p class="stream-info"> ${channel.streamType}</p>
+        ${channel.streamQuality !== "Desconhecida" ? `<p class="stream-info">${channel.streamQuality} ${channel.streamResolution}</p>` : ''}
+      </div>
+    </div>
+    <a href="${channel.streamUrl}" target="_blank">Assistir</a>
+    <div class="epg-info" id="epg-${channel.tvgId}">Agora:</div>
+	
+  `;
+  document.getElementById("channels-list").appendChild(channelElement);
+}
+
+
+
+// Carregar a lista de canais ao carregar a página
+loadChannels();
+
+// Adicionar eventos para alternar visualizações
+viewSelect.addEventListener("change", toggleView);
+
+// Por padrão, a visualização é a de lista
+toggleView();
+
+</script>
+
 </body>
-
-
-
-
 </html>
