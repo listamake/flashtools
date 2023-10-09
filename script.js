@@ -175,8 +175,20 @@
 	  
       // Limpar a lista antes de preencher os dados
       epgList.innerHTML = '';
-console.log("Invalid start format");
-      for (const programElement of programElements) {
+  // Verifique se a função filterProgramsByChannel está definida
+  let filteredPrograms;
+  if (typeof filterProgramsByChannel === 'function') {
+    // Se a função estiver definida, use-a para filtrar os programas
+    const programElements = xmlDoc.getElementsByTagName("programme");
+    filteredPrograms = filterProgramsByChannel(programElements);
+  } else {
+    // Se a função não estiver definida, use todos os programas
+    filteredPrograms = xmlDoc.getElementsByTagName("programme");
+  }
+
+  // Continue com o restante do código, agora utilizando os programas (filtrados ou não)
+  for (const programElement of filteredPrograms) {
+	  
         const channelId = programElement.getAttribute("channel");
         const channelElement = xmlDoc.querySelector(`channel[id="${channelId}"]`);
         if (!channelElement) {
