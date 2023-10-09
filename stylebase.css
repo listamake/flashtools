@@ -94,14 +94,16 @@
      padding: 0;
 	 margin: 0; /* Remover a margem padrão da lista */
   }
-
+    body {
+      font-family: Arial, sans-serif;
+    }
  #epgList li {
      display: flex;
      justify-content: space-between;
 	 flex-direction: column;
 	 align-items: stretch;
      margin-bottom: 10px; /* Adicionar espaço de 5 pixels entre os itens */
-     background-color: #f0f0f0; /* Cor cinza claro */
+     
      border-radius: 15px; /* Cantos arredondados */
      padding: 10px; /* Espaçamento interno para afastar o conteúdo das bordas */
   }
