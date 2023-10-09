@@ -1,0 +1,156 @@
+   body {
+      font-family: Arial, sans-serif;
+    }
+
+    /* Estilo para as classificações indicativas */
+    .rating-square {
+      display: inline-block;
+      width: 24px;
+      height: 24px;
+      text-align: center;
+      line-height: 24px;
+      border: 1px solid #000;
+      color: #fff;
+      font-size: 14px;
+      font-weight: normal;
+      font-family: "Anton", sans-serif;
+      margin-right: 5px;
+    }
+
+    .rating-l { background-color: green; }
+    .rating-a10 { background-color: #00ced1; } /* Azul Celeste */
+    .rating-a12 { background-color: #ffd700; } /* Amarelo Ouro */
+    .rating-a14 { background-color: orange; }
+    .rating-a16 { background-color: red; }
+    .rating-a18 { background-color: black; }
+
+  /* Tamanho da fonte para o nome do canal/IDs */
+  .program-info-container strong {
+    font-size: 14px;
+  }
+
+  /* Tamanho da fonte para o nome do programa */
+  .program-name {
+    font-size: 18px;
+    font-weight: bold;
+  }
+
+  /* Tamanho da fonte para as informações de início, fim e duração dos programas */
+  .program-info-container span {
+   font-size: 16px;
+  }
+
+  /* Estilo para a imagem do programa */
+  .program-image {
+     
+	 width:150%;
+     max-width: 110px; /* Limitar a largura máxima da imagem */
+     height: 75px; /* Ajustar a altura automaticamente de acordo com a largura */
+     object-fit: cover;
+     margin-right: 10px;
+     float: left;
+     border-radius: 10px; /* Adicionando bordas arredondadas */
+     margin-bottom: 18px; /* Adicionando uma margem inferior */
+ }
+
+  /* Estilo para as informações do programa */
+  .program-info {
+     display: block;
+     vertical-align: top;
+     margin-top: 10px; /* Adicionar uma margem superior */
+     flex: 1;
+     margin: 0 10px; /* Adicionar margem aos lados para separar os elementos */
+    }
+   .program-info-container {
+     display: flex;
+     align-items: center;
+     margin-bottom: 5px;
+   }
+ 
+ /* Estilo para a lista */
+   #epgList {
+     list-style: none;
+     padding: 0;
+	 margin: 0; /* Remover a margem padrão da lista */
+  }
+
+ #epgList li {
+     display: flex;
+     justify-content: space-between;
+	 flex-direction: column;
+	 align-items: stretch;
+     margin-bottom: 10px; /* Adicionar espaço de 5 pixels entre os itens */
+     background-color: #f0f0f0; /* Cor cinza claro */
+     border-radius: 15px; /* Cantos arredondados */
+     padding: 10px; /* Espaçamento interno para afastar o conteúdo das bordas */
+  }
+
+  /* Estilo para o contêiner da barra de duração e tempo restante */
+  .duration-info {
+     display: block;
+     margin-top: 5px;
+  }
+
+  /* Estilo para a barra de duração */
+  .duration-bar {
+     display: block;
+     height: 6px;
+     background-color: #ccc;
+     margin-top: 5px;
+  }
+
+  .duration-progress {
+     height: 100%;
+     background-color: #00ced1; /* Azul Celeste */
+  }
+
+  /* Estilo para o tempo restante */
+  .time-remaining {
+     font-size: 14px;
+     display: flex;
+  }
+
+    .rating-info {
+      display: flex;
+      align-items: center;
+    }
+	
+	/* Estilo para a lista em telas pequenas */
+@media screen and (max-width: 480px) {
+  #epgList li {
+    flex-direction: column; /* Alterar para direção de linha em telas pequenas */
+    align-items: stretch; /* Centralizar os elementos horizontalmente */
+  }
+
+  .program-info {
+    flex: 1;
+    margin: 0 10px; /* Adicionar margem aos lados para separar os elementos */
+  }
+
+  .duration-info {
+    margin-top: 10px; /* Aumentar a margem superior para separar os itens */
+  }
+
+  .program-image {
+    /* Reduzir a largura máxima da imagem em telas pequenas */
+    margin-right: 10px;
+    margin-bottom: 0; /* Remover a margem inferior da imagem */
+  }
+
+  .time-remaining {
+    margin-left: auto; /* Alinhar o tempo restante à direita */
+  }
+
+  .program-info-container strong {
+    font-size: 10px; /* Reduzir o tamanho da fonte para o nome do canal/IDs */
+  }
+
+  .program-name {
+    font-size: 14px; /* Reduzir o tamanho da fonte para o nome do programa */
+  }
+
+  .program-info-container span {
+    font-size: 14px; /* Reduzir o tamanho da fonte para as informações de início, fim e duração dos programas */
+  }
+  }
+  
