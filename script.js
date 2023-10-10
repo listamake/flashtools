@@ -234,19 +234,19 @@
               <img src="${programIcon || programIconDefault}" alt="Capa do programa" class="program-image">
               <div class="program-info">
                 <strong>${channelName ? `${channelName} (${channelId})` : channelId}</strong><br>
-                <span class="rating-info">
+                <div class="rating-info">
                   ${programRating ? `<span class="rating-square rating-${programRating.toLowerCase()}" style="background-color: ${ratingInfo.color};">${ratingInfo.text}</span>` : ''}
                  <span class="program-name"> ${programName}</span>
-                </span>
+                </div>
 				 ${subTitle ? `<span class="program-subtitle">${subTitle}</span><br>` : ''}<br>
-                <span>${formatTime(programStart)} - ${formatTime(programEnd)} (${formattedDuration})</span>
+                <div>${formatTime(programStart)} - ${formatTime(programEnd)} (${formattedDuration})</div>
               </div>
             </div>
             <div class="duration-info">
          <div class="duration-bar">
            <div class="duration-progress" style="width: ${durationProgress}"></div>
          </div>
-        <span class="time-remaining">${timeRemaining > 0 ? formatDuration(timeRemaining) : 'Programa encerrado'}</span>
+        <div class="time-remaining">${timeRemaining > 0 ? formatDuration(timeRemaining) : 'Programa encerrado'}</div>
         </div>
           `;
           epgList.appendChild(listItem);
