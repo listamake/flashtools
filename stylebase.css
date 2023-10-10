@@ -48,7 +48,8 @@
     .rating-a18 { background-color: black; }
   /* Tamanho da fonte para o nome do canal/IDs */
   .program-info-container strong {
-    font-size: 14px;
+	display: none;
+   
   }
 
   /* Tamanho da fonte para o nome do programa */
