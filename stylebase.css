@@ -49,7 +49,6 @@
   /* Tamanho da fonte para o nome do canal/IDs */
   .program-info-container strong {
 	display: none;
-   
   }
 
   /* Tamanho da fonte para o nome do programa */
@@ -65,15 +64,14 @@
 
   /* Estilo para a imagem do programa */
   .program-image {
-     
-	 width:150%;
+     width:150%;
      max-width: 110px; /* Limitar a largura máxima da imagem */
      height: 75px; /* Ajustar a altura automaticamente de acordo com a largura */
      object-fit: cover;
      margin-right: 10px;
      float: left;
      border-radius: 10px; /* Adicionando bordas arredondadas */
-     margin-bottom: 18px; /* Adicionando uma margem inferior */
+     margin-bottom: 2px; /* Adicionando uma margem inferior */
  }
 
   /* Estilo para as informações do programa */
@@ -111,7 +109,7 @@
   /* Estilo para o contêiner da barra de duração e tempo restante */
   .duration-info {
      display: block;
-     margin-top: 5px;
+     margin-top: 2px;
   }
 
   /* Estilo para a barra de duração */
@@ -119,7 +117,7 @@
      display: block;
      height: 6px;
      background-color: #ccc;
-     margin-top: 5px;
+     margin-top: 2px;
   }
 
   .duration-progress {
