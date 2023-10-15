@@ -135,4 +135,42 @@
       display: flex;
       align-items: center;
     }
-	
+	/* Estilo para a lista em telas pequenas */
+@media screen and (max-width: 580px) {
+  #epgList li {
+    flex-direction: column; /* Alterar para direção de linha em telas pequenas */
+    align-items: stretch; /* Centralizar os elementos horizontalmente */
+  }
+
+  .program-info {
+    flex: 1;
+    margin: 0 10px; /* Adicionar margem aos lados para separar os elementos */
+  }
+
+  .duration-info {
+    margin-top: 10px; /* Aumentar a margem superior para separar os itens */
+  }
+
+  .program-image {
+    /* Reduzir a largura máxima da imagem em telas pequenas */
+    margin-right: 10px;
+    margin-bottom: 0; /* Remover a margem inferior da imagem */
+  }
+
+  .time-remaining {
+    margin-left: auto; /* Alinhar o tempo restante à direita */
+  }
+
+  .program-info-container strong {
+    font-size: 10px; /* Reduzir o tamanho da fonte para o nome do canal/IDs */
+  }
+
+  .program-name {
+    font-size: 14px; /* Reduzir o tamanho da fonte para o nome do programa */
+  }
+
+  .program-info-container span {
+    font-size: 14px; /* Reduzir o tamanho da fonte para as informações de início, fim e duração dos programas */
+  }
+  }
+  	
