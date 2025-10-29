@@ -1,4 +1,4 @@
-   const epgUrl = "https://raw.githubusercontent.com/listamake/iptvbr/refs/heads/main/guide/epg.xml";
+   const epgUrl = "https://drive.google.com/file/d/1GQZbZeyVAbDBcDuZdCznuajjRJNR_88a/view?usp=sharing";
     const programIconDefault = "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEi68rQV6RY07KgoH3-ULq29CqmN0fKvMBLIb6M-w5AMOjRiqNqDsaajVzxmdK_xNRYJXu0jv_nmfco36yWoFyPPiIqXyT-w_IXCHo-1x0VwcCc015nxI0bm2gf1Jd-Tyh7zCKCGkvuXQsyynNPh6Y2ogNl_hZ1mcTqhEVVV32mO1lFXL1cye50qMcO3l6U/s320/GD_imgSemImagem.png";
 
 
