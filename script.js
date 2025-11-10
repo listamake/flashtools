@@ -258,4 +258,4 @@
     extractEPGInfo();
 
     // Definir intervalo de atualização (a cada 10 segundos)
-    setInterval(extractEPGInfo, 40000);
+    setInterval(extractEPGInfo, 90000);
